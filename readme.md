@@ -1,4 +1,4 @@
 
-# Blog
+# Jason Lambert's Blog
 
-The default [wintersmith](https://github.com/jnordberg/wintersmith) template
+jasonlambert.io
