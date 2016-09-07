@@ -1,9 +1,15 @@
 ---
-title: The Beginnings of a Metalsmith Plugin
+title: Fun With Cloud9 and Imagemagick
 author: Jason Lambert
-date: 2016-09-02
+date: 2016-09-04
 template: article.jade
+tags: cloud9, imagemagick, graphicsmagick, nodejs
 ---
+
+```sh
+sudo apt-get update
+sudo apt-get install -y imagemagick
+```
 
 The beauty of [Metalsmith][metalsmith] is in its simplicity. It doesn't assume anything about your project or what you want to achieve. Instead it relies on plugins to transform your information into something new. Most people think of Metalsmith as a static site generator and I am no different.
 
@@ -172,15 +178,15 @@ Here is the result:
 ```
 ├── listings
 │   ├── 461955714
-│   │   └── index.html
+│   │   ├── index.html
 │   ├── 461956582
-│   │   └── index.html
+│   │   ├── index.html
 │   ├── 461957474
-│   │   └── index.html
+│   │   ├── index.html
 │   ├── 461981564
-│   │   └── index.html
-│   └── 475445151
-│       └── index.html
+│   │   ├── index.html
+│   ├── 475445151
+│   │   ├── index.html
 └── index.html
 ```
 
