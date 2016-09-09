@@ -12,6 +12,8 @@ You can check out [metalsmith-etsy on NPM][npm].
 
 The [metalsmith-etsy github repo][github] is also available for public gawking.
 
+<span class="more"></span>
+
 ### Documentation
 So if you followed the [previous post][partone], congratulations. I wasn't very coherent plus I assumed a lot of familiarity with Metalsmith in my instructions.
 
