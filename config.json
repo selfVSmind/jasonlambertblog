@@ -1,9 +1,9 @@
 {
   "locals": {
     "url": "http://jasonlambert.io",
-    "name": "Le Blog De Jason Lambert",
+    "name": "Self Conquered Mind",
     "owner": "Jason Lambert",
-    "description": "Hey you guys!"
+    "description": "The personal tech blog of Jason Lambert"
   },
   "plugins": [
     "./plugins/paginator.coffee"
