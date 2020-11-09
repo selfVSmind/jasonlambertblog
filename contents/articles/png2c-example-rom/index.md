@@ -31,7 +31,7 @@ I wasn't going that road, so I scrapped CImg and rewrote the entire program with
 
 After I got the new code working with transparency, I found a new problem. I was attempting to create a menu with a full screen background image, and I ran into a wall.
 The N64's limited texture memory simply couldn't handle my 320x240 pixel image.
-I modified [PNG2C][png2c] to break up the large image into smaller textures that were 32x32 pixels each. In addition, vertex data is provided to make it easy to use in the game program.
+I modified [PNG2C][png2c] to break up the large image into smaller textures that were 32x32 pixels each (the textures in the bottom row are 32x16 pixels). In addition, vertex data is provided to make it easy to use in the game program.
 The output data consists of arrays of vertex data and arrays of pixel data to texturize said vertices. Each 32x32 chunk is simply a square drawn in 3D space. No one will ever know it isn't drawn in 2D.
 
 ### Using The New Program
