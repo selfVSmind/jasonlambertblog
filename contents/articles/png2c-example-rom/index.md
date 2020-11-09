@@ -5,8 +5,8 @@ date: 2020-11-09
 template: article.pug
 ---
 
-<div style="text-align:center">
-	<iframe width="353" height="304" src="https://www.youtube.com/embed/ZAk2-fZf-rk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="youtube">
+	<iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZAk2-fZf-rk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br />
 

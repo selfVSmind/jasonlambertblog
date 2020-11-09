@@ -387,10 +387,23 @@ code.lang-markdown .bullet {
 
 @media (min-width: 1600px) {
   body { font-size: 26px; }
+  .youtube {
+	  height: 473px;
+	  width: 548px;
+	  text-align: center;
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+  }
 }
 
 @media (max-width: 900px) {
   body { font-size: 18px; }
+  .youtube {
+	  height: 274px;
+	  width: 318px;
+	  text-align: center;
+  }
 }
 
 @media (max-width: 690px) {
