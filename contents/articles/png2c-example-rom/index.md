@@ -1,5 +1,5 @@
 ---
-title: "PNG2C: An N64 Texture Converter."
+title: "PNG2C - An N64 Texture Converter."
 author: Jason Lambert
 date: 2020-11-09
 template: article.jade
