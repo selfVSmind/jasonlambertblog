@@ -383,6 +383,13 @@ code.lang-markdown .bullet {
   color: #8959a8;
 }
 
+.youtube {
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 /* media queries */
 
 @media (min-width: 1600px) {
@@ -390,10 +397,6 @@ code.lang-markdown .bullet {
   .youtube {
 	  height: 473px;
 	  width: 548px;
-	  text-align: center;
-	  display: block;
-	  margin-left: auto;
-	  margin-right: auto;
   }
 }
 
@@ -402,7 +405,6 @@ code.lang-markdown .bullet {
   .youtube {
 	  height: 274px;
 	  width: 318px;
-	  text-align: center;
   }
 }
 
