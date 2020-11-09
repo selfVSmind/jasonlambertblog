@@ -2,7 +2,7 @@
 title: Metalsmith Etsy Boilerplate Project
 author: Jason Lambert
 date: 2016-09-06
-template: article.jade
+template: article.pug
 ---
 
 This is a part two of a [previous post][partone].

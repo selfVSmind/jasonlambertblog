@@ -2,7 +2,7 @@
 title: The Beginnings of a Metalsmith Plugin
 author: Jason Lambert
 date: 2016-09-02
-template: article.jade
+template: article.pug
 ---
 
 The beauty of [Metalsmith][metalsmith] is in its simplicity. It doesn't assume anything about your project or what you want to achieve. Instead it relies on plugins to transform your information into something new. Most people think of Metalsmith as a static site generator and I am no different.
