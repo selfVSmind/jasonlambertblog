@@ -60,12 +60,16 @@ h2 {
 }
 
 h3 {
+  color: white;
   font-style: italic;
   text-align: center;
   font-weight: 400;
   font-size: 1.4em;
   margin-top: 1.8em;
   margin-bottom: 0.8em;
+  background-color: #c72c41;
+  border-top: 1px dashed #d2d2d2;
+  border-radius: 1em;
 }
 
 ol, ul {
@@ -146,6 +150,7 @@ footer .nav {
   margin-top: 5em;
   margin-bottom: 3.5em;
   background-color: #801336;
+  border-top: 1px dashed #d2d2d2;
   border-radius: 1em;
 }
 
@@ -185,6 +190,7 @@ footer .copy, footer .copy a {
 .article {
   margin: 3em 0 4em;
   background-color: #801336;
+  border-top: 1px dashed #d2d2d2;
   border-radius: 1em;
 }
 
