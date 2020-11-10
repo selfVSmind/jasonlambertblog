@@ -14,7 +14,7 @@ body {
   font-family: 'Lora', serif;
   font-size: 21px;
   line-height: 1.52;
-  background-color: #f8f8f8;
+  background-color: #2d132c;
   text-rendering: optimizeLegibility;
 }
 
@@ -24,16 +24,17 @@ body {
 }
 
 body, a {
-  color: #171717;
+  color: #ee4540;
 }
 
 a:hover {
-  color: #ff8000;
+  color: white;
   text-decoration: underline;
 }
 
 p {
   margin-bottom: 1.52em;
+  color: white;
 }
 
 pre {
@@ -144,6 +145,8 @@ footer .nav {
   text-align: center;
   margin-top: 5em;
   margin-bottom: 3.5em;
+  background-color: #801336;
+  border-radius: 1em;
 }
 
 footer .nav a {
@@ -181,10 +184,13 @@ footer .copy, footer .copy a {
 
 .article {
   margin: 3em 0 4em;
+  background-color: #801336;
+  border-radius: 1em;
 }
 
 .article header {
   border-top: 1px dashed #d2d2d2;
+  border-radius: 1em;
 }
 
 .article header h2 {
@@ -206,12 +212,17 @@ footer .copy, footer .copy a {
 }
 
 .article header .date span {
-  background-color: #f8f8f8;
+  background-color: #c72c41;
   padding: 0 0.7em;
+  border-radius: 1em;
 }
 
 .article.intro .content p {
   display: inline;
+}
+
+.article .content {
+  padding: 1em;
 }
 
 .article.intro .content .more {
