@@ -1,2 +1,5 @@
 # To avoid uploading the node_modules folder, filled with node.js packages:
 node_modules/
+
+# Dont commit the build directory
+build/
