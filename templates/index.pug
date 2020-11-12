@@ -2,12 +2,22 @@
 extends layout
 
 block content
-    div(class="landing-page-item")
-        a(href=locals.github)
-            img(id="github-logo", src="/images/github-logo.svg", alt="Jason Lambert")
+    div(class="no-background-color-override article")
+        header
+            p(class="date")
+                span Important Links
 
-    div(class="landing-page-item")
-        a(href=locals.blog)
-            img(id="blog-logo", src="/images/blog-logo.svg", alt="Jason Lambert")
+            div(class="landing-page-item")    
+                a(href=locals.github target="_blank")
+                    img(id="github-logo", src="/images/github-logo.svg", alt="Jason Lambert")
+
+    div(class="no-background-color-override article")
+        header
+            p(class="date")
+                span My Programming Blog
+
+            div(class="landing-page-item")    
+                a(href=locals.blog)
+                    img(id="blog-logo", src="/images/blog-logo.svg", alt="Jason Lambert")
 
 
