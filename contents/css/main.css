@@ -93,8 +93,6 @@ h3 {
   margin-top: 1.8em;
   margin-bottom: 0.8em;
   /* background-color: #c72c41; */
-  margin-left: 5em;
-  margin-right: 5em;
   border-top: 1px dashed #d2d2d2;
   border-bottom: 1px dashed #d2d2d2;
   border-radius: 1em;
@@ -186,7 +184,8 @@ footer .nav {
   margin-top: 5em;
   margin-bottom: 3.5em;
   background-color: #801336;
-  border-top: 1px dashed #d2d2d2;
+  border-bottom: 1px dashed #d2d2d2;
+  border-left: 1px dashed #d2d2d2;
   border-radius: 1em;
 }
 
@@ -460,6 +459,10 @@ code.lang-markdown .bullet {
   .youtube {
 	  height: 473px;
 	  width: 548px;
+  }
+  h3 {
+    margin-left: 5em;
+    margin-right: 5em;
   }
 }
 
