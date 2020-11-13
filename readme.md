@@ -1,4 +1,4 @@
 
-# [![Jason Lambert's Blog](contents/images/jasonlambertjsonlogo.png)](https://jasonlambert.io)
+# [![Jason Lambert's Blog](contents/images/jasonlambertjsonlogo.svg)](jasonlambert.io)
 
 jasonlambert.io
