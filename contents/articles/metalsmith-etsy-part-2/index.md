@@ -5,6 +5,9 @@ date: 2016-09-06
 template: article.pug
 ---
 
+![metalsmith-x-etsy](../metalsmith-etsy/metalsmith-etsy.png)
+<br /><a></a>
+
 This is a part two of a [previous post][partone].
 
 ### Metalsmith-Etsy is Live

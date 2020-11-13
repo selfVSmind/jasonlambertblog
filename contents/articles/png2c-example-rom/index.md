@@ -5,6 +5,8 @@ date: 2020-11-09
 template: article.pug
 ---
 
+<a></a>
+
 <div class="youtube">
 	<iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZAk2-fZf-rk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
@@ -12,10 +14,8 @@ template: article.pug
 
 About 7 years ago, I was really into the idea of coding my own N64 game.
 I took a deep dive into the tools that I could find and the limited documentation that came with it.
-The first major hurdle I encountered was using my own textures. There are some sample textures in the SDK, but they are in an archaic format.
+The first major hurdle I encountered was using my own textures. <span class="more"></span>There are some sample textures in the SDK, but they are in an archaic format.
 Many times, the documentation refers to a small command line program named ***rgb2c*** that is used to convert the already archaic images into a compatible format. 
-
-<span class="more"></span>
 
 ### RGB2C Doesn't Exist!
 
@@ -36,7 +36,7 @@ The output data consists of arrays of vertex data and arrays of pixel data to te
 
 ### Using The New Program
 
-To get started with the new updates, I took the liberty of shrinking my favorite picture of myself down to 320x240 pixels and renaming it ***full_screen_image.png***.
+To get started with the new updates, I took the liberty of shrinking my favorite picture of myself down to 320x240 pixels and renaming it ***full_screen_image.png***. (The name doesn't matter.)
 
 ![Jason Lambert on Chive](full_screen_image.png)
 

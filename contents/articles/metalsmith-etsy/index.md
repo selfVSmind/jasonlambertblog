@@ -5,6 +5,9 @@ date: 2016-09-02
 template: article.pug
 ---
 
+![metalsmith-x-etsy](metalsmith-etsy.png)
+<br /><a></a>
+
 The beauty of [Metalsmith][metalsmith] is in its simplicity. It doesn't assume anything about your project or what you want to achieve. Instead it relies on plugins to transform your information into something new. Most people think of Metalsmith as a static site generator and I am no different.
 
 ### But What If I Don't Want to Build a Blog?
