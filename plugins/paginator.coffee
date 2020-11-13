@@ -6,7 +6,7 @@ module.exports = (env, callback) ->
   defaults =
     template: 'blog.pug' # template that renders pages
     articles: 'articles' # directory containing contents to paginate
-    first: 'blog.html' # filename/url for first page
+    first: 'blog/index.html' # filename/url for first page
     filename: 'page/%d/index.html' # filename for rest of pages
     perPage: 2 # number of articles per page
 

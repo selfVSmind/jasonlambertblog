@@ -2,6 +2,13 @@
 /* I grabbed the color pallet from */
 /* https://colorhunt.co/palette/163991 */
 
+.myUnusedColorHuntClassForReferencing {
+  color: #2d132c;
+  color: #801336;
+  color: #c72c41;
+  color: #ee4540;
+}
+
 #logo {
   width: 100%;
 }
@@ -26,6 +33,9 @@ body {
   /* border-top: 1px dashed #d2d2d2; */
   border-radius: 1em;
   padding-top: 3em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 2em;
   /* margin-top: 3em; */
 }
 
@@ -82,8 +92,11 @@ h3 {
   font-size: 1.4em;
   margin-top: 1.8em;
   margin-bottom: 0.8em;
-  background-color: #c72c41;
+  /* background-color: #c72c41; */
+  margin-left: 5em;
+  margin-right: 5em;
   border-top: 1px dashed #d2d2d2;
+  border-bottom: 1px dashed #d2d2d2;
   border-radius: 1em;
 }
 
@@ -93,6 +106,14 @@ ol, ul {
 
 li {
   margin-bottom: 0.5em;
+}
+
+h2 a {
+  color: white;
+}
+
+h2 a:hover {
+  color: #c72c41;
 }
 
 blockquote {
@@ -206,11 +227,13 @@ footer .copy, footer .copy a {
   margin: 3em 0 4em;
   background-color: #801336;
   border-top: 1px dashed #d2d2d2;
+  border-right: 1px dashed #d2d2d2;
   border-radius: 1em;
 }
 
 .article header {
-  border-top: 1px dashed #d2d2d2;
+  /* border-top: 1px dashed #d2d2d2;
+  border-right: 1px dashed #d2d2d2; */
   border-radius: 1em;
 }
 
@@ -220,6 +243,12 @@ footer .copy, footer .copy a {
   font-weight: 400;
   margin: 0.8em 0;
   font-size: 1.4em;
+  background-color: #2d132c;
+  border-radius: 1em;
+  border-bottom: 1px dashed #d2d2d2;
+  border-left: 1px dashed #d2d2d2;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .article header h2 a {
@@ -236,6 +265,8 @@ footer .copy, footer .copy a {
   background-color: #c72c41;
   padding: 0 0.7em;
   border-radius: 1em;
+  border-top: 1px dashed #d2d2d2;
+  border-right: 1px dashed #d2d2d2;
 }
 
 .article.intro .content p {
@@ -569,3 +600,12 @@ code.lang-markdown .bullet {
   background-color: transparent;
 }
 
+.article header h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.date {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

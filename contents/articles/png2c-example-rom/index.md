@@ -47,8 +47,8 @@ Converting it into an N64 compatible texture is easy as cucumber pie. Just issue
 ```
 
 This command generates a new file called ***full_screen_image.h*** and it is packed with all the data we need to draw a full screen image on the N64.
-I'm not giving out my source code for the N64 program just yet, but I have compiled a [sample rom][romLink] to show that it does, indeed perform as expected.
-[Download the rom][romLink] and try it out on your favorite N64 emulator. I have only tested it on [Project64][pj64], so your mileage may vary. It also runs on actual hardware, if you're wondering.
+I'm not giving out my source code for the N64 program just yet, but I have compiled a [sample rom][romLink] to show that it does indeed perform as expected.
+Try it out on your favorite N64 emulator. I have only tested it on [Project64][pj64], so your mileage may vary. It also runs on actual hardware, if you're wondering.
 
 
 [romLink]: ./jason_last_man.n64
