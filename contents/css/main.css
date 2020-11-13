@@ -29,6 +29,18 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.top-right-border {
+  border-top: 1px dashed #d2d2d2;
+  border-right: 1px dashed #d2d2d2;
+  border-radius: 1em;
+}
+
+.bottom-left-border {
+  border-bottom: 1px dashed #d2d2d2;
+  border-left: 1px dashed #d2d2d2;
+  border-radius: 1em;
+}
+
 .landing-page-item {
   /* border-top: 1px dashed #d2d2d2; */
   border-radius: 1em;
@@ -139,6 +151,19 @@ hr {
   font-weight: 700;
   margin: 0;
 }
+
+.blog-header h1 {
+  font-size: 1.6em;
+  text-align: center;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-header h1 a{
+  text-decoration: none;
+}
+
 
 .header a, .header a:hover {
   text-decoration: none;
@@ -611,4 +636,8 @@ code.lang-markdown .bullet {
 .date {
   margin-bottom: 0;
   padding-bottom: 0;
+}
+
+.blog-article {
+  margin-top: 1em;
 }

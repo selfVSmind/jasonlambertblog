@@ -4,12 +4,15 @@ extends layout
 block content
   include author
   each article in articles
-    article.article.intro
+    div.blog-header
+      h1
+        a(href=article.url)= article.title
+    article.article.intro.blog-article
       header
         p.date
           span= moment.utc(article.date).format('DD. MMMM YYYY')
-        h2
-          a(href=article.url)= article.title
+        //- h2
+        //-   a(href=article.url)= article.title
       section.content
         if article.intro.length > 0
           != typogr(article.intro).typogrify()
