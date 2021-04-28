@@ -12,6 +12,8 @@ template: article.pug
 </div>
 <br />
 
+(Those sound effects are, indeed from the rom I built.)
+
 About 7 years ago, I was really into the idea of coding my own N64 game.
 I took a deep dive into the tools that I could find and the limited documentation that came with it.
 The first major hurdle I encountered was using my own textures. <span class="more"></span>There are some sample textures in the SDK, but they are in an archaic format.
