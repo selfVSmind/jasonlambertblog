@@ -41,14 +41,40 @@ body {
   border-radius: 1em;
 }
 
+.dashed-border {
+  border: 1px dashed #d2d2d2;
+  border-radius: 1em;
+}
+
+.landing-page-parent {
+  margin-top: -2em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+/* .landing-page-parent > div {
+  flex: 50%;
+} */
+
 .landing-page-item {
+  flex: 30%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
   /* border-top: 1px dashed #d2d2d2; */
   border-radius: 1em;
   padding-top: 3em;
   padding-left: 1em;
   padding-right: 1em;
   padding-bottom: 2em;
+  margin: 1em;
   /* margin-top: 3em; */
+}
+
+.landing-page-item img {
+  width: 100%;
 }
 
 .sitewidelogo {
@@ -500,6 +526,14 @@ code.lang-markdown .bullet {
 }
 
 @media (max-width: 690px) {
+  .landing-page-item {
+    flex: 100%;
+  }
+
+  .landing-page-parent {
+    margin-top: 0;
+  }
+  
   .content-wrap {
     width: auto;
     padding: 0 1em;

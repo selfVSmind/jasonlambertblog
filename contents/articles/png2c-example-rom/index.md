@@ -12,7 +12,7 @@ template: article.pug
 </div>
 <br />
 
-(Those sound effects are, indeed from the rom I built.)
+(Those sound effects are, indeed from the rom I built.)<br>
 
 About 7 years ago, I was really into the idea of coding my own N64 game.
 I took a deep dive into the tools that I could find and the limited documentation that came with it.
