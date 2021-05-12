@@ -78,6 +78,7 @@ const init = () => {
   camera.position.z = 100;
   renderer.setClearColor(15790320);
   renderer.setPixelRatio(window.devicePixelRatio);
+
 };
 
 let theta = 0.0;
@@ -87,6 +88,8 @@ const animate = () => {
   requestAnimationFrame(animate);
 
   geometry.rotation.x = theta;
+  mesh.rotation.x = theta;
+  mesh.rotation.y = theta;
   articleText.rotation.y = theta/2;
   theta += vel;
   if(theta > 1 || theta < -1) vel *= -1;
@@ -148,3 +151,14 @@ window.addEventListener('touchstart', onTouchStart, false);
 
 
 init();
+
+let texture = new THREE.TextureLoader().load("articles/first-post/jasonlambertchive.jpg");
+let boxGeometry = new THREE.BoxGeometry( 10, 10, 10 );
+// Create a MeshBasicMaterial with a loaded texture
+let material = new THREE.MeshBasicMaterial( { map: texture} );
+
+// Combine the boxGeometry and material into a mesh
+let mesh = new THREE.Mesh( boxGeometry, material );
+// Add the mesh to the scene
+scene.add( mesh );
+

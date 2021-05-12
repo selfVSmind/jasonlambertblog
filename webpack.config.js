@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build', '3d')
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'build', '3d'),
+    contentBase: path.resolve(__dirname, 'build'),
   },
   plugins: [
     new CopyPlugin({

@@ -55,15 +55,19 @@ const renderer = {
     return src;
   },
   code(code, infostring, escaped) {
-    if(infostring !== 'sh') return '';
+    if(infostring !== 'sh') return '{ "type": "paragraph", "data": { "text": "TO DO: This should be a block of code. Jason hasn\'t implemented this yet. :(" } },';
     return `{ "type": "codeblock", "data": { "code": "${code}" } },`;
   }
 };
 
-getArticleData = (filePath) => {
+getArticleData = (filePath, articleDir) => {
   let fileContent = fs.readFileSync(filePath, {encoding:'utf8', flag:'r'});
 
   const meta = matter(fileContent);
+
+  renderer.image = (href, title, text) => {
+    return `{ "type": "image", "data": { "imageUrl": "articles/${articleDir}/${href}" } },`;
+  };
 
   let interpretedContent = marked(meta.content);
 
@@ -95,7 +99,7 @@ let articleDataArray = [];
 var dirs = fs.readdirSync(path.join(__dirname, 'contents', 'articles'));
 dirs.forEach(dir => {
   dirPath = path.join(__dirname, 'contents', 'articles', dir);
-  if(fs.lstatSync(dirPath).isDirectory()) articleDataArray.push(getArticleData(path.join(dirPath, 'index.md')));
+  if(fs.lstatSync(dirPath).isDirectory()) articleDataArray.push(getArticleData(path.join(dirPath, 'index.md'), dir));
 });
 
 let outfilePath = path.join(__dirname, 'src-3d', 'article-data.json');
