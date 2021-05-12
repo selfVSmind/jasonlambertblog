@@ -3,7 +3,24 @@
     "moment": "^2.22.2",
     "typogr": "0.6.x",
     "underscore": "^1.9.1",
-    "wintersmith": "^2.5.0"
+    "wintersmith": "^2.5.0",
+    "copy-webpack-plugin": "^8.1.1",
+    "gray-matter": "^4.0.3",
+    "he": "^1.2.0",
+    "marked": "^2.0.3",
+    "three": "^0.128.0",
+    "troika-three-text": "^0.41.2"
   },
-  "private": true
+  "devDependencies": {
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "private": true,
+  "scripts": {
+    "pre-build-3d": "node ./parse-article-data-for-3d.js",
+    "build-3d": "npm run-script pre-build-3d && npx webpack",
+    "serve-3d": "npx webpack serve",
+    "build-all": "npm run-script build-3d && wintersmith build"
+  }
 }

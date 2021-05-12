@@ -3,3 +3,6 @@ node_modules/
 
 # Dont commit the build directory
 build/
+
+# This is the generated article data json file
+src-3d/article-data.json
