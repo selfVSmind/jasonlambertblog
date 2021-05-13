@@ -66,7 +66,7 @@ getArticleData = (filePath, articleDir) => {
   const meta = matter(fileContent);
 
   renderer.image = (href, title, text) => {
-    return `{ "type": "image", "data": { "imageUrl": "articles/${articleDir}/${href}" } },`;
+    return `{ "type": "image", "data": { "imageUrl": "/articles/${articleDir}/${href}" } },`;
   };
 
   let interpretedContent = marked(meta.content);
