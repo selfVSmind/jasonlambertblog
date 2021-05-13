@@ -152,7 +152,7 @@ window.addEventListener('touchstart', onTouchStart, false);
 
 init();
 
-let texture = new THREE.TextureLoader().load("articles/first-post/jasonlambertchive.jpg");
+let texture = new THREE.TextureLoader().load("/articles/first-post/jasonlambertchive.jpg");
 let boxGeometry = new THREE.BoxGeometry( 10, 10, 10 );
 // Create a MeshBasicMaterial with a loaded texture
 let material = new THREE.MeshBasicMaterial( { map: texture} );
