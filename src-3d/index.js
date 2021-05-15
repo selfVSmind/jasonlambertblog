@@ -2,12 +2,13 @@ import * as THREE from 'three'
 import { Text } from 'troika-three-text'
 const articleData = require('./article-data.json');
 
-let scene, camera, renderer, geometry, articleText;
+let scene, camera, renderer, jasonLambertTextMesh, articleText;
+let sceneWidth = 100;
 
 const add3dText = () => {
   const loader = new THREE.FontLoader();
 
-  loader.load( 'fonts/Turok_Regular.typeface.json', function ( font ) {
+  loader.load( 'fonts/Turok_Regular.typeface.json', function (font) {
   
     let textGeometry = new THREE.TextGeometry( '{jason:lambert}', {
       font: font,
@@ -23,16 +24,16 @@ const add3dText = () => {
 
     textGeometry.computeBoundingBox();
 
-    let textMaterial = new THREE.MeshPhongMaterial( { color: 0xff00ff, specular: 0xffffff } );
+    let textMaterial = new THREE.MeshPhongMaterial({color: 0xff00ff, specular: 0xffffff});
    
     // let textTexture = new THREE.TextureLoader().load('textures/bacon-me-crazy.jpg');
     // textTexture.repeat.set(0.1, 0.1);
     // let textMaterial = new THREE.MeshBasicMaterial({ map: textTexture });
 
-    geometry = new THREE.Mesh( textGeometry, textMaterial );
-    geometry.position.x -= textGeometry.boundingBox.max.x / 2;
-    geometry.position.y += 10;
-    scene.add(geometry);
+    jasonLambertTextMesh = new THREE.Mesh(textGeometry, textMaterial);
+    jasonLambertTextMesh.position.x -= textGeometry.boundingBox.max.x / 2;
+    jasonLambertTextMesh.position.y += 10;
+    scene.add(jasonLambertTextMesh);
     animate();
 
   } );
@@ -87,9 +88,7 @@ let vel = 0.01;
 const animate = () => {
   requestAnimationFrame(animate);
 
-  geometry.rotation.x = theta;
-  mesh.rotation.x = theta;
-  mesh.rotation.y = theta;
+  jasonLambertTextMesh.rotation.x = theta;
   articleText.rotation.y = theta/2;
   theta += vel;
   if(theta > 1 || theta < -1) vel *= -1;
@@ -109,7 +108,7 @@ const onWindowResize = () => {
   camera.fov = THREE.MathUtils.radToDeg(Math.atan(newCameraHeight)) * 2;
 
   camera.updateProjectionMatrix();
-  renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setSize(window.innerWidth, window.innerHeight);
 };
 
 let yPos = 0;
@@ -142,7 +141,7 @@ const onTouchMove = (event) => {
 }
 
 window.addEventListener('resize', onWindowResize, false);
-window.addEventListener( 'wheel', onMouseWheel, false );
+window.addEventListener('wheel', onMouseWheel, false);
 window.addEventListener('touchmove', onTouchMove, false);
 window.addEventListener('touchstart', onTouchStart, false);
 // window.addEventListener('touchcancel', onTouchCancel, false);
@@ -152,13 +151,17 @@ window.addEventListener('touchstart', onTouchStart, false);
 
 init();
 
-let texture = new THREE.TextureLoader().load("/articles/first-post/jasonlambertchive.jpg");
-let boxGeometry = new THREE.BoxGeometry( 10, 10, 10 );
-// Create a MeshBasicMaterial with a loaded texture
-let material = new THREE.MeshBasicMaterial( { map: texture} );
+let texture = new THREE.TextureLoader().load("/articles/first-post/jasonlambertchive.jpg", (loadedTexture) => {
+  let width = loadedTexture.image.naturalWidth, height = loadedTexture.image.naturalHeight;
+  let displayWidth = sceneWidth * 0.9;
+  let displayHeight = (height/width)*displayWidth;
 
-// Combine the boxGeometry and material into a mesh
-let mesh = new THREE.Mesh( boxGeometry, material );
-// Add the mesh to the scene
-scene.add( mesh );
+  let planeGeometry = new THREE.PlaneGeometry(displayWidth, displayHeight);
+  // Create a MeshBasicMaterial with a loaded texture
+  let material = new THREE.MeshBasicMaterial({map: texture});
 
+  // Combine the planeGeometry and material into a mesh
+  let mesh = new THREE.Mesh(planeGeometry, material);
+  // Add the mesh to the scene
+  scene.add( mesh );
+});
