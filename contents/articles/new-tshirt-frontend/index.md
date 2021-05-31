@@ -16,6 +16,7 @@ The project originally started out as a for-my-eyes-only ordeal, but I have made
 You can play around with it right [here][jasonstees].
 
 My original attempt at the website was somewhat... unattractive.
+
 [![](old-version.jpg 'My first attempt..')][old-version]
 
 Most importantly, it was not secure. For starters, I put the database access keys directly in the public javascript. I can't be too upset at myself considering this was never meant to be seen by other people.
@@ -28,6 +29,7 @@ I really fell in love with Angular. My old client side javascript got pretty gar
 The Angular environment is very modular which helped me organize my thoughts and of course my actual code.
 
 This is what I came up with for the new version.
+
 [![](new-version.jpg 'Try, try again!')][jasonstees]
 
 Not too shabby, my dear sir.
@@ -38,6 +40,7 @@ Not too shabby, my dear sir.
 
 The full scale mockup image looks pretty good, btw.
 Credit to [Fred's t-shirt script][fred]. Excellent work, Fred.
+
 ![](for-sale-zoomed.jpg 'Detail')
 
 ### Next Steps
