@@ -2,16 +2,19 @@
   "locals": {
     "url": "/index.html",
     "github": "https://github.com/selfVSmind",
+    "linkedIn": "https://www.linkedin.com/in/jason-the-programmer/",
     "blog": "/blog",
+    "blogSource": "https://github.com/selfVSmind/jasonlambertblog",
     "vinylView": "https://github.com/selfVSmind/vinyl-view",
-    "tShirt": "https://t-shirts.jasonlambert.io",
+    "tShirt": "https://t-shirts.jasonlambert.io/create",
+    "tShirtBackendSource": "https://github.com/selfVSmind/jasons-tees-backend",
+    "tShirtFrontendSource": "https://github.com/selfVSmind/jasons-tees-frontend",
+    "png2cSource": "https://github.com/selfVSmind/png2c",
     "name": "Jason Lambert's Blog",
     "owner": "Jason Lambert",
     "description": "My personal blog. It's about programming. I'm trying to get a job."
   },
-  "plugins": [
-    "./plugins/paginator.coffee"
-  ],
+  "plugins": ["./plugins/paginator.coffee"],
   "require": {
     "moment": "moment",
     "_": "underscore",
