@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Self Conquered Mind</title><atom:link href="/articles/blog-two-point-oh/oldest-version/feed.xml" rel="self" type="application/rss+xml"></atom:link><link>/articles/blog-two-point-oh/oldest-version</link><description>The personal tech blog of Jason Lambert</description><pubDate>Mon, 05 Sep 2016 17:00:00 -0700</pubDate><generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator><language>en</language><item><title>Metalsmith Etsy Boilerplate Project</title><link>/articles/blog-two-point-oh/oldest-version/articles/metalsmith-etsy-part-2/</link><pubDate>Mon, 05 Sep 2016 17:00:00 -0700</pubDate><guid isPermaLink="true">/articles/blog-two-point-oh/oldest-version/articles/metalsmith-etsy-part-2/</guid><author></author><description>&lt;p&gt;This is a part two of a &lt;a href=&quot;/articles/blog-two-point-oh/oldest-version/articles/metalsmith-etsy&quot;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;metalsmith-etsy-is-live&quot;&gt;Metalsmith-Etsy is Live&lt;/h3&gt;
+&lt;p&gt;You can check out &lt;a href=&quot;https://www.npmjs.com/package/metalsmith-etsy&quot;&gt;metalsmith-etsy on NPM&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/selfVSmind/metalsmith-etsy&quot;&gt;metalsmith-etsy github repo&lt;/a&gt; is also available for public gawking.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;documentation&quot;&gt;Documentation&lt;/h3&gt;
+&lt;p&gt;So if you followed the &lt;a href=&quot;/articles/blog-two-point-oh/oldest-version/articles/metalsmith-etsy&quot;&gt;previous post&lt;/a&gt;, congratulations. I wasn’t very coherent plus I assumed a lot of familiarity with Metalsmith in my instructions.&lt;/p&gt;
+&lt;p&gt;I’ve decided that the best way to show you how the plugin is designed to work is just to give you a working example. You can &lt;a href=&quot;https://github.com/selfVSmind/metalsmith-etsy-boilerplate&quot;&gt;find that example here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The instructions that come with the boilerplate project are very straightforward, so I’m just going to copy them here.&lt;/p&gt;
+&lt;p&gt;Please contact me with any suggestions or errors in my work or for fun or with cute cat pictures.&lt;/p&gt;
+&lt;h2 id=&quot;metalsmith-etsy-boilerplate&quot;&gt;metalsmith-etsy-boilerplate&lt;/h2&gt;
+&lt;p&gt;Essential boilerplate code to get you up and running with a custom Etsy website.&lt;/p&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ git clone http://github.com/selfVSmind/metalsmith-etsy-boilerplate.git
+$ cd metalsmith-etsy-boilerplate
+$ npm install&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;requirements&quot;&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;You must &lt;a href=&quot;https://www.etsy.com/developers/register&quot;&gt;register for and Etsy API key&lt;/a&gt; and enter that key in &lt;strong&gt;build.js&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;My Etsy shop name is filled in for demonstration purposes so keep that or change it to your own shop.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;listing_template&lt;/strong&gt; field is important. Right now it is set to a Handlebars template. You can change the project to use Jade instead and update the template.&lt;/p&gt;
+&lt;h2 id=&quot;build&quot;&gt;Build&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ node build&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;what-s-next-&quot;&gt;What’s Next?&lt;/h2&gt;
+&lt;p&gt;Now I suggest you brush off your CSS skills and make this site worth looking at. Have fun!&lt;/p&gt;
+</description></item><item><title>The Beginnings of a Metalsmith Plugin</title><link>/articles/blog-two-point-oh/oldest-version/articles/metalsmith-etsy/</link><pubDate>Thu, 01 Sep 2016 17:00:00 -0700</pubDate><guid isPermaLink="true">/articles/blog-two-point-oh/oldest-version/articles/metalsmith-etsy/</guid><author></author><description>&lt;p&gt;The beauty of &lt;a href=&quot;http://www.metalsmith.io/&quot;&gt;Metalsmith&lt;/a&gt; is in its simplicity. It doesn’t assume anything about your project or what you want to achieve. Instead it relies on plugins to transform your information into something new. Most people think of Metalsmith as a static site generator and I am no different.&lt;/p&gt;
+&lt;h3 id=&quot;but-what-if-i-don-t-want-to-build-a-blog-&quot;&gt;But What If I Don’t Want to Build a Blog?&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Like I tried to express, Metalsmith is capable of almost &lt;strong&gt;&lt;em&gt;anything&lt;/em&gt;&lt;/strong&gt;. So what if you’re interested in building an ecommerce site. Specifically, what if you want to build a website to showcase your Etsy shop?&lt;/p&gt;
+&lt;h3 id=&quot;metalsmith-can-do-this-&quot;&gt;Metalsmith Can Do This!&lt;/h3&gt;
+&lt;p&gt;Quite easily, in fact. But we’ll need to add the functionality ourselves. Let’s say your Metalsmith build file looks something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; Metalsmith = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'metalsmith'&lt;/span&gt;),
+  markdown = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'metalsmith-markdown'&lt;/span&gt;),
+  templates = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'metalsmith-templates'&lt;/span&gt;);
+
+Metalsmith(__dirname)
+  .use(markdown())
+  .use(
+    templates({
+      &lt;span class=&quot;attr&quot;&gt;engine&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'handlebars'&lt;/span&gt;,
+      &lt;span class=&quot;attr&quot;&gt;partials&lt;/span&gt;: {
+        &lt;span class=&quot;attr&quot;&gt;header&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'partials/header'&lt;/span&gt;,
+        &lt;span class=&quot;attr&quot;&gt;footer&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'partials/footer'&lt;/span&gt;,
+      },
+    })
+  )
+  .destination(&lt;span class=&quot;string&quot;&gt;'./build'&lt;/span&gt;)
+  .build(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;err&lt;/span&gt;) &lt;/span&gt;{
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (err) &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(err);
+  });&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We’re going to squeeze our code in at the very top of that daisychain like so:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; Metalsmith = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'metalsmith'&lt;/span&gt;),
+  markdown = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'metalsmith-markdown'&lt;/span&gt;),
+  templates = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'metalsmith-templates'&lt;/span&gt;),
+  my_custom_etsy_plugin = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'./my_custom_etsy_plugin.js'&lt;/span&gt;);
+
+Metalsmith(__dirname)
+  .use(my_custom_etsy_plugin())
+  .use(markdown())
+  .use(
+    templates({
+      &lt;span class=&quot;attr&quot;&gt;engine&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'handlebars'&lt;/span&gt;,
+      &lt;span class=&quot;attr&quot;&gt;partials&lt;/span&gt;: {
+        &lt;span class=&quot;attr&quot;&gt;header&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'partials/header'&lt;/span&gt;,
+        &lt;span class=&quot;attr&quot;&gt;footer&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'partials/footer'&lt;/span&gt;,
+      },
+    })
+  )
+  .destination(&lt;span class=&quot;string&quot;&gt;'./build'&lt;/span&gt;)
+  .build(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;err&lt;/span&gt;) &lt;/span&gt;{
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (err) &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(err);
+  });&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Beautiful! Ok let’s make a new file named &lt;strong&gt;my_custom_etsy_plugin.js&lt;/strong&gt; and put this inside:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; getJSON = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'get-json'&lt;/span&gt;);
+&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; request = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'sync-request'&lt;/span&gt;);
+
+&lt;span class=&quot;built_in&quot;&gt;module&lt;/span&gt;.exports = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;options&lt;/span&gt;) &lt;/span&gt;{
+  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; my_etsy_api_key = &lt;span class=&quot;string&quot;&gt;'&amp;lt;your_api_key&amp;gt;'&lt;/span&gt;;
+  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; my_etsy_shop_name = &lt;span class=&quot;string&quot;&gt;'StickToThePlannerCOM'&lt;/span&gt;;
+
+  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;files, metalsmith, done&lt;/span&gt;) &lt;/span&gt;{
+    &lt;span class=&quot;comment&quot;&gt;// Let's grab the first 5 active listings for testing's sake&lt;/span&gt;
+    getJSON(
+      &lt;span class=&quot;string&quot;&gt;'https://openapi.etsy.com/v2/shops/'&lt;/span&gt; +
+        my_etsy_shop_name +
+        &lt;span class=&quot;string&quot;&gt;'/listings/active?limit=5&amp;amp;api_key='&lt;/span&gt; +
+        my_etsy_api_key,
+      &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;error, response&lt;/span&gt;) &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (error) &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(error);
+        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+          &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; allActiveListings = [];
+
+          &lt;span class=&quot;comment&quot;&gt;// loop through every active etsy listing in the shop&lt;/span&gt;
+          response.results.forEach(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;listing&lt;/span&gt;) &lt;/span&gt;{
+            &lt;span class=&quot;comment&quot;&gt;// make up a name of a virtual markdown file named after the etsy listing id&lt;/span&gt;
+            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; workingFile = &lt;span class=&quot;string&quot;&gt;'listings/'&lt;/span&gt; + listing.listing_id + &lt;span class=&quot;string&quot;&gt;'/index.md'&lt;/span&gt;;
+
+            &lt;span class=&quot;comment&quot;&gt;// push that file to allActiveListings&lt;/span&gt;
+            allActiveListings.push(
+              &lt;span class=&quot;string&quot;&gt;'listings/'&lt;/span&gt; + listing.listing_id + &lt;span class=&quot;string&quot;&gt;'/index.html'&lt;/span&gt;
+            );
+
+            &lt;span class=&quot;comment&quot;&gt;// OK this is the fun part!&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;// We're creating a virtual markdown file that the other Metalsmith plugins can manipulate!!&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;// When doing this sort of thing DO NOT FORGET the contents variable.. It is required by the Metalsmith environment&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;// Also note that we're using a Handlebars template named listing that we will define next&lt;/span&gt;
+            files[workingFile] = {
+              &lt;span class=&quot;attr&quot;&gt;contents&lt;/span&gt;: listing.description,
+              &lt;span class=&quot;attr&quot;&gt;etsy_link&lt;/span&gt;: listing.url,
+              &lt;span class=&quot;attr&quot;&gt;template&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;'listing.hbt'&lt;/span&gt;,
+            };
+
+            &lt;span class=&quot;comment&quot;&gt;// let's grab all of the images for the listing&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;// etsy api requires that you do this in a seperate request&lt;/span&gt;
+            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; res = request(
+              &lt;span class=&quot;string&quot;&gt;'GET'&lt;/span&gt;,
+              &lt;span class=&quot;string&quot;&gt;'https://openapi.etsy.com/v2/listings/'&lt;/span&gt; +
+                listing.listing_id +
+                &lt;span class=&quot;string&quot;&gt;'/images?api_key='&lt;/span&gt; +
+                my_etsy_api_key
+            );
+
+            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; jsonRes = &lt;span class=&quot;built_in&quot;&gt;JSON&lt;/span&gt;.parse(res.getBody());
+
+            &lt;span class=&quot;comment&quot;&gt;// I'm choosing to make an array with a url to each image&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;// We're going to pass this into the virtual markdown file as YAML data&lt;/span&gt;
+            files[workingFile].listingImages = [];
+            jsonRes.results.forEach(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;result&lt;/span&gt;) &lt;/span&gt;{
+              files[workingFile].listingImages.push(result.url_fullxfull);
+            });
+
+            &lt;span class=&quot;comment&quot;&gt;// OK this last part is so we can reference our virtual files later from the site's root index.md&lt;/span&gt;
+            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; indexContentString = &lt;span class=&quot;string&quot;&gt;''&lt;/span&gt;;
+            allActiveListings.forEach(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;listingLink&lt;/span&gt;) &lt;/span&gt;{
+              indexContentString +=
+                &lt;span class=&quot;string&quot;&gt;'&amp;lt;a href=&quot;'&lt;/span&gt; + listingLink + &lt;span class=&quot;string&quot;&gt;'&quot;&amp;gt;'&lt;/span&gt; + listingLink + &lt;span class=&quot;string&quot;&gt;'&amp;lt;/a&amp;gt;&amp;lt;br&amp;gt;'&lt;/span&gt;;
+            });
+            files[&lt;span class=&quot;string&quot;&gt;'index.md'&lt;/span&gt;].contents = indexContentString;
+          });
+        }
+
+        &lt;span class=&quot;comment&quot;&gt;// done() signifies our re-entry into the daisychain we snuck into earlier&lt;/span&gt;
+        done();
+      }
+    );
+  };
+};&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you’re wondering where to get your API key, you have to &lt;a href=&quot;https://www.etsy.com/developers/register&quot;&gt;register a new Etsy app here&lt;/a&gt;. Just make up whatever you want! It’s free and you can always make another if you’re unhappy with the name.&lt;/p&gt;
+&lt;p&gt;We’ll need to define our &lt;strong&gt;listing.hbt&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-handlebars&quot;&gt;&lt;span class=&quot;template-variable&quot;&gt;{{&amp;gt; header}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;
+
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;h2&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;template-variable&quot;&gt;{{title}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;h2&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;product-images&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;template-variable&quot;&gt;{{listingImages.[0]}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;template-variable&quot;&gt;{{listingImages.[1]}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;template-variable&quot;&gt;{{listingImages.[2]}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;template-variable&quot;&gt;{{listingImages.[3]}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;li&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+&lt;/span&gt;&lt;span class=&quot;template-variable&quot;&gt;{{&amp;gt; footer}}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Make sure to install the dependencies:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save get-json&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and..&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;npm install --save sync-request&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So far so good. Now build your project.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;node build&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is the result:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;├── listings
+│   ├── 461955714
+│   │   └── index.html
+│   ├── 461956582
+│   │   └── index.html
+│   ├── 461957474
+│   │   └── index.html
+│   ├── 461981564
+│   │   └── index.html
+│   └── 475445151
+│       └── index.html
+└── index.html&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Not very pretty but it was a success! Let’s take a look at &lt;a href=&quot;/articles/blog-two-point-oh/oldest-version/articles/metalsmith-etsy/examplelisting.html&quot;&gt;&lt;strong&gt;listings/461955714/index.html&lt;/strong&gt;&lt;/a&gt;. (Don’t forget to Ctrl+U)&lt;/p&gt;
+&lt;p&gt;The paragraph tag was an unexpected artifact but we clearly accomplished our goal. In a later post we can make this more generalized and get it published as an official node package! Until next time..&lt;/p&gt;
+</description></item><item><title>The Legend Returns</title><link>/articles/blog-two-point-oh/oldest-version/articles/first-post/</link><pubDate>Wed, 31  Aug 2016 17:00:00 -0700</pubDate><guid isPermaLink="true">/articles/blog-two-point-oh/oldest-version/articles/first-post/</guid><author></author><description>&lt;p&gt;&lt;img src=&quot;/articles/first-post/jasonlambertchive.jpg&quot; alt=&quot;Jason Lambert&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Deep in the Amazonian jungles…&lt;/p&gt;
+</description></item></channel></rss>

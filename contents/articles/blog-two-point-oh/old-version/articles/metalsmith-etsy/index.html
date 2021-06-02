@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="theme-color" content="#2d132c">
+    <meta name="msapplication-navbutton-color" content="#2d132c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width">
+    <title>The Beginnings of a Metalsmith Plugin - Jason Lambert's Blog
+    </title>
+    <link rel="alternate" href="/articles/blog-two-point-oh/old-version/feed.xml" type="application/rss+xml" title="My personal blog. It's about programming. I'm trying to get a job.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/articles/blog-two-point-oh/old-version/css/main.css">
+  </head>
+  <body class="article-detail">
+    <div class="sitewidelogo"><a href="/articles/blog-two-point-oh/old-version"><img id="logo" src="/articles/blog-two-point-oh/old-version/images/jasonlambertjsonlogo.svg" alt="Jason Lambert"></a></div>
+    <header class="header">
+      <div class="content-wrap">
+        <h1>The Beginnings of a Metalsmith Plugin</h1>
+        <p class="author">Written by <span class="author">Jason Lambert</span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><p><img src="/articles/metalsmith-etsy/metalsmith-etsy.png" alt="metalsmith-x-etsy">
+<br /><a></a></p>
+<p>The beauty of <a href="http://www.metalsmith.io/">Metalsmith</a> is in its simplicity. It doesn’t assume anything about your project or what you want to achieve. Instead it relies on plugins to transform your information into something new. Most people think of Metalsmith as a static site generator and I am no&nbsp;different.</p>
+<h3 id="but-what-if-i-don-t-want-to-build-a-blog-">But What If I Don’t Want to Build a&nbsp;Blog?</h3>
+<p><span class="more"></span></p>
+<p>Like I tried to express, Metalsmith is capable of almost <strong><em>anything</em></strong>. So what if you’re interested in building an ecommerce site. Specifically, what if you want to build a website to showcase your Etsy&nbsp;shop?</p>
+<h3 id="metalsmith-can-do-this-">Metalsmith Can Do&nbsp;This!</h3>
+<p>Quite easily, in fact. But we’ll need to add the functionality ourselves. Let’s say your Metalsmith build file looks something like&nbsp;this:</p>
+<pre><code class="language-javascript"><span class="keyword">var</span> Metalsmith = <span class="built_in">require</span>(<span class="string">'metalsmith'</span>),
+    markdown = <span class="built_in">require</span>(<span class="string">'metalsmith-markdown'</span>),
+    templates = <span class="built_in">require</span>(<span class="string">'metalsmith-templates'</span>)
+
+Metalsmith(__dirname)
+    .use(markdown())
+    .use(templates({
+        <span class="attr">engine</span>: <span class="string">'handlebars'</span>,
+        <span class="attr">partials</span>: {
+            <span class="attr">header</span>: <span class="string">'partials/header'</span>,
+            <span class="attr">footer</span>: <span class="string">'partials/footer'</span>
+        }
+    }))
+    .destination(<span class="string">'./build'</span>)
+    .build(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>{ <span class="keyword">if</span>(err) <span class="built_in">console</span>.log(err) })</code></pre>
+<p>We’re going to squeeze our code in at the very top of that daisychain like&nbsp;so:</p>
+<pre><code class="language-javascript"><span class="keyword">var</span> Metalsmith = <span class="built_in">require</span>(<span class="string">'metalsmith'</span>),
+    markdown = <span class="built_in">require</span>(<span class="string">'metalsmith-markdown'</span>),
+    templates = <span class="built_in">require</span>(<span class="string">'metalsmith-templates'</span>),
+    my_custom_etsy_plugin = <span class="built_in">require</span>(<span class="string">'./my_custom_etsy_plugin.js'</span>)
+
+Metalsmith(__dirname)
+    .use(my_custom_etsy_plugin())
+    .use(markdown())
+    .use(templates({
+        <span class="attr">engine</span>: <span class="string">'handlebars'</span>,
+        <span class="attr">partials</span>: {
+            <span class="attr">header</span>: <span class="string">'partials/header'</span>,
+            <span class="attr">footer</span>: <span class="string">'partials/footer'</span>
+        }
+    }))
+    .destination(<span class="string">'./build'</span>)
+    .build(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>{ <span class="keyword">if</span>(err) <span class="built_in">console</span>.log(err) })</code></pre>
+<p>Beautiful! Ok let’s make a new file named <strong>my_custom_etsy_plugin.js</strong> and put this&nbsp;inside:</p>
+<pre><code class="language-javascript"><span class="keyword">var</span> getJSON = <span class="built_in">require</span>(<span class="string">'get-json'</span>)
+<span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'sync-request'</span>);
+
+<span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>{
+
+    <span class="keyword">var</span> my_etsy_api_key = <span class="string">'&lt;your_api_key&gt;'</span>
+    <span class="keyword">var</span> my_etsy_shop_name = <span class="string">'StickToThePlannerCOM'</span>
+
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">files, metalsmith, done</span>) </span>{
+
+        <span class="comment">// Let's grab the first 5 active listings for testing's sake</span>
+        getJSON(<span class="string">'https://openapi.etsy.com/v2/shops/'</span> + my_etsy_shop_name + <span class="string">'/listings/active?limit=5&amp;api_key='</span>+my_etsy_api_key, <span class="function"><span class="keyword">function</span>(<span class="params">error, response</span>)</span>{
+
+            <span class="keyword">if</span>(error) <span class="built_in">console</span>.log(error)
+
+            <span class="keyword">else</span> {
+
+                <span class="keyword">var</span> allActiveListings = []
+
+                <span class="comment">// loop through every active etsy listing in the shop</span>
+                response.results.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">listing</span>) </span>{
+
+                    <span class="comment">// make up a name of a virtual markdown file named after the etsy listing id</span>
+                    <span class="keyword">var</span> workingFile = <span class="string">'listings/'</span> + listing.listing_id + <span class="string">'/index.md'</span>
+
+                    <span class="comment">// push that file to allActiveListings</span>
+                    allActiveListings.push(<span class="string">'listings/'</span> + listing.listing_id + <span class="string">'/index.html'</span>)
+
+                    <span class="comment">// <span class="caps">OK</span> this is the fun part!</span>
+                    <span class="comment">// We're creating a virtual markdown file that the other Metalsmith plugins can manipulate!!</span>
+                    <span class="comment">// When doing this sort of thing <span class="caps">DO</span> NOT FORGET the contents variable.. It is required by the Metalsmith environment</span>
+                    <span class="comment">// Also note that we're using a Handlebars template named listing that we will define next</span>
+                    files[workingFile] = {<span class="attr">contents</span>: listing.description, <span class="attr">etsy_link</span>: listing.url, <span class="attr">template</span>: <span class="string">'listing.hbt'</span>}
+
+                    <span class="comment">// let's grab all of the images for the listing</span>
+                    <span class="comment">// etsy api requires that you do this in a seperate request</span>
+                    <span class="keyword">var</span> res = request(<span class="string">'<span class="caps">GET</span>'</span>, <span class="string">'https://openapi.etsy.com/v2/listings/'</span> + listing.listing_id + <span class="string">'/images?api_key='</span>+my_etsy_api_key);
+
+                    <span class="keyword">var</span> jsonRes = <span class="built_in"><span class="caps">JSON</span></span>.parse(res.getBody())
+
+                    <span class="comment">// I'm choosing to make an array with a url to each image</span>
+                    <span class="comment">// We're going to pass this into the virtual markdown file as <span class="caps">YAML</span> data</span>
+                    files[workingFile].listingImages = []
+                    jsonRes.results.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>{
+                        files[workingFile].listingImages.push(result.url_fullxfull)
+                    })
+
+                    <span class="comment">// <span class="caps">OK</span> this last part is so we can reference our virtual files later from the site's root index.md</span>
+                    <span class="keyword">var</span> indexContentString = <span class="string">''</span>
+                    allActiveListings.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">listingLink</span>) </span>{
+                        indexContentString += <span class="string">'&lt;a href="'</span> + listingLink + <span class="string">'"&gt;'</span> + listingLink + <span class="string">'&lt;/a&gt;&lt;br&gt;'</span>
+                    })
+                    files[<span class="string">'index.md'</span>].contents = indexContentString
+                })
+            }
+
+            <span class="comment">// done() signifies our re-entry into the daisychain we snuck into earlier</span>
+            done()         
+        })
+    }
+}</code></pre>
+<p>If you’re wondering where to get your <span class="caps">API</span> key, you have to <a href="https://www.etsy.com/developers/register">register a new Etsy app here</a>. Just make up whatever you want! It’s free and you can always make another if you’re unhappy with the&nbsp;name.</p>
+<p>We’ll need to define our <strong>listing.hbt</strong></p>
+<pre><code class="language-handlebars"><span class="template-variable">{{&gt; header}}</span><span class="xml">
+
+<span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><span class="template-variable">{{title}}</span><span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"product-images"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">ul</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">li</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"</span></span></span><span class="template-variable">{{listingImages.[0]}}</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">li</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"</span></span></span><span class="template-variable">{{listingImages.[1]}}</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">li</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"</span></span></span><span class="template-variable">{{listingImages.[2]}}</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">li</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"</span></span></span><span class="template-variable">{{listingImages.[3]}}</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+</span><span class="template-variable">{{&gt; footer}}</span></code></pre>
+<p>Make sure to install the&nbsp;dependencies:</p>
+<pre><code class="language-sh">npm install --save get-json</code></pre>
+<p>and..</p>
+<pre><code class="language-sh">npm install --save sync-request</code></pre>
+<p>So far so good. Now build your&nbsp;project.</p>
+<pre><code class="language-sh">node build</code></pre>
+<p>Here is the&nbsp;result:</p>
+<pre><code>├── listings
+│   ├── 461955714
+│   │   └── index.html
+│   ├── 461956582
+│   │   └── index.html
+│   ├── 461957474
+│   │   └── index.html
+│   ├── 461981564
+│   │   └── index.html
+│   └── 475445151
+│       └── index.html
+└── index.html</code></pre><p>Not very pretty but it was a success! Let’s take a look at <a href="/articles/metalsmith-etsy/examplelisting.html"><strong>listings/461955714/index.html</strong></a>. (Don’t forget to&nbsp;Ctrl+U)</p>
+<p>The paragraph tag was an unexpected artifact but we clearly accomplished our goal. In a later post we can make this more generalized and get it published as an official node package! Until next&nbsp;time..</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/articles/blog-two-point-oh/old-version/blog/">&laquo; Full blog</a></div>
+        <section class="about">
+        </section>
+        <section class="copy">
+          <p>&copy; 2020 Jason Lambert</p>
+        </section>
+      </div>
+    </footer>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-83595160-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

@@ -3,10 +3,8 @@ title: I Rebuilt The Jason's Tees Frontend!
 author: Jason Lambert
 date: 2021-05-07
 template: article.pug
+graphic: /images/jasons-tees-logo.png
 ---
-
-![](../../images/jasons-tees-logo.png "Jason's Tees Logo")
-<br /><a></a>
 
 One of my favorite projects in recent years was my custom ebay lister I made for my (failure of a) t-shirt business.
 The project originally started out as a for-my-eyes-only ordeal, but I have made some modifications and it is now a public website.
@@ -17,7 +15,7 @@ You can play around with it right [here][jasonstees].
 
 My original attempt at the website was somewhat... unattractive.
 
-[![](old-version.jpg 'My first attempt..')][old-version]
+[![](old-version.jpg 'My first attempt..')](old-version.jpg)
 
 Most importantly, it was not secure. For starters, I put the database access keys directly in the public javascript. I can't be too upset at myself considering this was never meant to be seen by other people.
 
@@ -30,18 +28,18 @@ The Angular environment is very modular which helped me organize my thoughts and
 
 This is what I came up with for the new version.
 
-[![](new-version.jpg 'Try, try again!')][jasonstees]
+[![](new-version.jpg 'Try, try again!')](new-version.jpg)
 
 Not too shabby, my dear sir.
 
 ### The Results Are In
 
-![](for-sale.jpg 'Buy my shirt!')
+[![](for-sale.jpg 'Buy my shirt!')](for-sale.jpg)
 
 The full scale mockup image looks pretty good, btw.
 Credit to [Fred's t-shirt script][fred]. Excellent work, Fred.
 
-![](for-sale-zoomed.jpg 'Detail')
+[![](for-sale-zoomed.jpg 'Detail')](for-sale-zoomed.jpg)
 
 ### Next Steps
 

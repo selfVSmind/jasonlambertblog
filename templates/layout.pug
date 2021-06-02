@@ -23,22 +23,39 @@ html(lang='en')
         block title
           = locals.name
       link(rel='alternate', href=locals.url+'/feed.xml', type='application/rss+xml', title=locals.description)
-      link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300')
-      link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css')
-      link(rel='stylesheet', href=contents.css['main.css'].url)
+      link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
+      link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+
+      //- Fonts
+      link(rel='stylesheet', href='https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300&family=Signika:wght@300&display=swap')
+
+      //- My Stuffs
+      script(type='text/javascript', src=contents.js['splash.js'].url)
+      link(rel='stylesheet', href=contents.css['splash.css'].url)
+
   body(class=bodyclass)
     header.header
       div.header-background
       a(href=locals.url)
           img(id="logo", src="/images/jasonlambertjsonlogo.svg", alt="Jason Lambert")
-    div.content-wrap
-      block header
-        div.logo
+          h1 Software Engineer
+    block header
+      div.logo
     div#content
-      div.content-wrap
-        block content
-          //- This is where the .pug files take over and add the actual page content
+      block content
+        //- This is where the .pug files take over and add the actual page content
     footer
+      .socials    
+        .social-icon
+            a(href=locals.github)
+                img(src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/github.svg")
+        .social-icon.social-icon-square
+            a(href=locals.linkedIn)
+                img(src="/images/icons/linked-in-logo.svg" style="")
+        .social-icon
+            a(href="mailto:jason@jasonlambert.io")
+                img(src="/images/icons/email.svg")
+
       div.content-wrap
         block footer
           section.about

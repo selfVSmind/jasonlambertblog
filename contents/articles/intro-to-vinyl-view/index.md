@@ -3,10 +3,8 @@ title: Introducing Vinyl View
 author: Jason Lambert
 date: 2020-12-16
 template: article.pug
+graphic: /images/vinyl-view-logo.svg
 ---
-
-![vinyl-view](../../images/vinyl-view-logo.svg)
-<br /><a></a>
 
 I've been working on a new project. Vinyl View is a real time visualizer for turntables. It samples the audio and sends it to a recognition service, then references [Discogs][discogs] in order to show the user album art and some metadata for the music they are currently listening to.
 

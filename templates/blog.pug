@@ -2,30 +2,33 @@
 extends layout
 
 block content
-  include author
-  each article in articles
-    //- div.blog-header
-    //-   h1
-    //-     a(href=article.url)= article.title
-    article.article.intro.blog-article
-      header
-        p.date
-          span= moment.utc(article.date).format('DD. MMMM YYYY')
-        //- h2
-        //-   a(href=article.url)= article.title
-      a(href=article.url)
-        section.content
-          if article.intro.length > 0
-            != typogr(article.intro).typogrify()
-          if article.hasMore
-            p.more
-              a(href=article.url) more
+  .blog-primary-wrapper
+    include author
+    each article in articles
+      .blog-primary-article.neumorphic
+        .blog-article
+          if article.metadata.graphic
+            a(href=article.url)
+              img(src=article.metadata.graphic).blog-primary-graphic
+          div.article-title
+            a(href=article.url)
+              h1= article.title
+          .article-header
+            p.date
+              span= moment.utc(article.date).format('DD. MMMM YYYY')
+            //- h2
+            //-   a(href=article.url)= article.title
+          section.content
+            if article.intro.length > 0
+              != typogr(article.intro).typogrify()
+            if article.hasMore
+              p.more
+                a(href=article.url) Continue Reading
 
-block prepend footer
-  div.nav
-    if prevPage
-      a(href=prevPage.url) &laquo; Newer
-    else
-      a(href='/archive.html') &laquo; Archives
-    if nextPage
-      a(href=nextPage.url) Next page &raquo;
+    .paginator-wrapper
+      if prevPage
+        a(href=prevPage.url).left &laquo; Newer
+      else
+        a(href='/archive').left &laquo; Archives
+      if nextPage
+        a(href=nextPage.url).right Older &raquo;
