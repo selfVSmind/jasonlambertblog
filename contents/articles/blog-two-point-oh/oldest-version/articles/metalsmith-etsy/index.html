@@ -1,10 +1,80 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta http-equiv="cache-control" content="max-age=0"><meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"><meta http-equiv="expires" content="0"><meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"><meta http-equiv="pragma" content="no-cache"><meta name="viewport" content="width=device-width"><title>The Beginnings of a Metalsmith Plugin - Self Conquered Mind</title><link rel="alternate" href="/articles/blog-two-point-oh/oldest-version/feed.xml" type="application/rss+xml" title="The personal tech blog of Jason Lambert"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"><link rel="stylesheet" href="/articles/blog-two-point-oh/oldest-version/css/main.css"></head><body class="article-detail"><a href="/articles/blog-two-point-oh/oldest-version"><img id="logo" src="/articles/blog-two-point-oh/oldest-version/images/jasonlambertjsonlogo.png" alt="Jason Lambert"></a><header class="header"><div class="content-wrap"><h1>The Beginnings of a Metalsmith Plugin</h1><p class="author">Written by Jason Lambert</p></div></header><div id="content"><div class="content-wrap"><article class="article"><section class="content"><p>The beauty of <a href="http://www.metalsmith.io/">Metalsmith</a> is in its simplicity. It doesn’t assume anything about your project or what you want to achieve. Instead it relies on plugins to transform your information into something new. Most people think of Metalsmith as a static site generator and I am no&nbsp;different.</p>
-<h3 id="but-what-if-i-don-t-want-to-build-a-blog-">But What If I Don’t Want to Build a&nbsp;Blog?</h3>
-<p><span class="more"></span></p>
-<p>Like I tried to express, Metalsmith is capable of almost <strong><em>anything</em></strong>. So what if you’re interested in building an ecommerce site. Specifically, what if you want to build a website to showcase your Etsy&nbsp;shop?</p>
-<h3 id="metalsmith-can-do-this-">Metalsmith Can Do&nbsp;This!</h3>
-<p>Quite easily, in fact. But we’ll need to add the functionality ourselves. Let’s say your Metalsmith build file looks something like&nbsp;this:</p>
-<pre><code class="language-javascript"><span class="keyword">var</span> Metalsmith = <span class="built_in">require</span>(<span class="string">'metalsmith'</span>),
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width" />
+    <title>The Beginnings of a Metalsmith Plugin - Self Conquered Mind</title>
+    <link
+      rel="alternate"
+      href="/articles/blog-two-point-oh/oldest-version/feed.xml"
+      type="application/rss+xml"
+      title="The personal tech blog of Jason Lambert"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/articles/blog-two-point-oh/oldest-version/css/main.css"
+    />
+  </head>
+  <body class="article-detail">
+    <a href="/articles/blog-two-point-oh/oldest-version"
+      ><img
+        id="logo"
+        src="/articles/blog-two-point-oh/oldest-version/images/jasonlambertjsonlogo.png"
+        alt="Jason Lambert"
+    /></a>
+    <header class="header">
+      <div class="content-wrap">
+        <h1>The Beginnings of a Metalsmith Plugin</h1>
+        <p class="author">Written by Jason Lambert</p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content">
+            <p>
+              The beauty of
+              <a href="http://www.metalsmith.io/">Metalsmith</a> is in its
+              simplicity. It doesn’t assume anything about your project or what
+              you want to achieve. Instead it relies on plugins to transform
+              your information into something new. Most people think of
+              Metalsmith as a static site generator and I am no&nbsp;different.
+            </p>
+            <h3 id="but-what-if-i-don-t-want-to-build-a-blog-">
+              But What If I Don’t Want to Build a&nbsp;Blog?
+            </h3>
+            <p><span class="more"></span></p>
+            <p>
+              Like I tried to express, Metalsmith is capable of almost
+              <strong><em>anything</em></strong
+              >. So what if you’re interested in building an ecommerce site.
+              Specifically, what if you want to build a website to showcase your
+              Etsy&nbsp;shop?
+            </p>
+            <h3 id="metalsmith-can-do-this-">Metalsmith Can Do&nbsp;This!</h3>
+            <p>
+              Quite easily, in fact. But we’ll need to add the functionality
+              ourselves. Let’s say your Metalsmith build file looks something
+              like&nbsp;this:
+            </p>
+            <pre><code class="language-javascript"><span class="keyword">var</span> Metalsmith = <span class="built_in">require</span>(<span class="string">'metalsmith'</span>),
   markdown = <span class="built_in">require</span>(<span class="string">'metalsmith-markdown'</span>),
   templates = <span class="built_in">require</span>(<span class="string">'metalsmith-templates'</span>);
 
@@ -23,8 +93,11 @@ Metalsmith(__dirname)
   .build(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>{
     <span class="keyword">if</span> (err) <span class="built_in">console</span>.log(err);
   });</code></pre>
-<p>We’re going to squeeze our code in at the very top of that daisychain like&nbsp;so:</p>
-<pre><code class="language-javascript"><span class="keyword">var</span> Metalsmith = <span class="built_in">require</span>(<span class="string">'metalsmith'</span>),
+            <p>
+              We’re going to squeeze our code in at the very top of that
+              daisychain like&nbsp;so:
+            </p>
+            <pre><code class="language-javascript"><span class="keyword">var</span> Metalsmith = <span class="built_in">require</span>(<span class="string">'metalsmith'</span>),
   markdown = <span class="built_in">require</span>(<span class="string">'metalsmith-markdown'</span>),
   templates = <span class="built_in">require</span>(<span class="string">'metalsmith-templates'</span>),
   my_custom_etsy_plugin = <span class="built_in">require</span>(<span class="string">'./my_custom_etsy_plugin.js'</span>);
@@ -45,8 +118,12 @@ Metalsmith(__dirname)
   .build(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>{
     <span class="keyword">if</span> (err) <span class="built_in">console</span>.log(err);
   });</code></pre>
-<p>Beautiful! Ok let’s make a new file named <strong>my_custom_etsy_plugin.js</strong> and put this&nbsp;inside:</p>
-<pre><code class="language-javascript"><span class="keyword">var</span> getJSON = <span class="built_in">require</span>(<span class="string">'get-json'</span>);
+            <p>
+              Beautiful! Ok let’s make a new file named
+              <strong>my_custom_etsy_plugin.js</strong> and put
+              this&nbsp;inside:
+            </p>
+            <pre><code class="language-javascript"><span class="keyword">var</span> getJSON = <span class="built_in">require</span>(<span class="string">'get-json'</span>);
 <span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'sync-request'</span>);
 
 <span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>{
@@ -120,9 +197,16 @@ Metalsmith(__dirname)
     );
   };
 };</code></pre>
-<p>If you’re wondering where to get your <span class="caps">API</span> key, you have to <a href="https://www.etsy.com/developers/register">register a new Etsy app here</a>. Just make up whatever you want! It’s free and you can always make another if you’re unhappy with the&nbsp;name.</p>
-<p>We’ll need to define our <strong>listing.hbt</strong></p>
-<pre><code class="language-handlebars"><span class="template-variable">{{&gt; header}}</span><span class="xml">
+            <p>
+              If you’re wondering where to get your
+              <span class="caps">API</span> key, you have to
+              <a href="https://www.etsy.com/developers/register"
+                >register a new Etsy app here</a
+              >. Just make up whatever you want! It’s free and you can always
+              make another if you’re unhappy with the&nbsp;name.
+            </p>
+            <p>We’ll need to define our <strong>listing.hbt</strong></p>
+            <pre><code class="language-handlebars"><span class="template-variable">{{&gt; header}}</span><span class="xml">
 
 <span class="tag">&lt;<span class="name">h2</span>&gt;</span></span><span class="template-variable">{{title}}</span><span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
 
@@ -144,14 +228,14 @@ Metalsmith(__dirname)
 <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
 
 </span><span class="template-variable">{{&gt; footer}}</span></code></pre>
-<p>Make sure to install the&nbsp;dependencies:</p>
-<pre><code class="language-sh">npm install --save get-json</code></pre>
-<p>and..</p>
-<pre><code class="language-sh">npm install --save sync-request</code></pre>
-<p>So far so good. Now build your&nbsp;project.</p>
-<pre><code class="language-sh">node build</code></pre>
-<p>Here is the&nbsp;result:</p>
-<pre><code>├── listings
+            <p>Make sure to install the&nbsp;dependencies:</p>
+            <pre><code class="language-sh">npm install --save get-json</code></pre>
+            <p>and..</p>
+            <pre><code class="language-sh">npm install --save sync-request</code></pre>
+            <p>So far so good. Now build your&nbsp;project.</p>
+            <pre><code class="language-sh">node build</code></pre>
+            <p>Here is the&nbsp;result:</p>
+            <pre><code>├── listings
 │   ├── 461955714
 │   │   └── index.html
 │   ├── 461956582
@@ -162,14 +246,63 @@ Metalsmith(__dirname)
 │   │   └── index.html
 │   └── 475445151
 │       └── index.html
-└── index.html</code></pre><p>Not very pretty but it was a success! Let’s take a look at <a href="/articles/metalsmith-etsy/examplelisting.html"><strong>listings/461955714/index.html</strong></a>. (Don’t forget to&nbsp;Ctrl+U)</p>
-<p>The paragraph tag was an unexpected artifact but we clearly accomplished our goal. In a later post we can make this more generalized and get it published as an official node package! Until next&nbsp;time..</p>
-</section></article></div></div><footer><div class="content-wrap"><div class="nav"><a href="/articles/blog-two-point-oh/oldest-version/">&laquo; Full blog</a></div><section class="about"><p>This beautiful <del>site</del> experience is maintained by <a href="http://www.jasonlambert.io">Jason Lambert</a>.</p>
-<p>I hope you enjoyed your stay.</p>
-</section><section class="copy"><p>&copy; 2016 Jason Lambert</p></section></div></footer><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+└── index.html</code></pre>
+            <p>
+              Not very pretty but it was a success! Let’s take a look at
+              <a href="/articles/metalsmith-etsy/examplelisting.html"
+                ><strong>listings/461955714/index.html</strong></a
+              >. (Don’t forget to&nbsp;Ctrl+U)
+            </p>
+            <p>
+              The paragraph tag was an unexpected artifact but we clearly
+              accomplished our goal. In a later post we can make this more
+              generalized and get it published as an official node package!
+              Until next&nbsp;time..
+            </p>
+          </section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav">
+          <a href="/articles/blog-two-point-oh/oldest-version/"
+            >&laquo; Full blog</a
+          >
+        </div>
+        <section class="about">
+          <p>
+            This beautiful <del>site</del> experience is maintained by
+            <a href="http://www.jasonlambert.io">Jason Lambert</a>.
+          </p>
+          <p>I hope you enjoyed your stay.</p>
+        </section>
+        <section class="copy"><p>&copy; 2016 Jason Lambert</p></section>
+      </div>
+    </footer>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        'script',
+        'https://www.google-analytics.com/analytics.js',
+        'ga'
+      );
 
-ga('create', 'UA-83595160-1', 'auto');
-ga('send', 'pageview');</script></body></html>
+      ga('create', 'UA-83595160-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
