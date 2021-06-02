@@ -277,6 +277,11 @@ header h1 {
   margin: 0 !important;
 }
 
+.article-title img {
+  animation: flipInY;
+  animation-duration: 1300ms;
+}
+
 @media only screen and (min-width: 1023px) {
   :is(.article-content, .blog-primary-article .content)::first-letter {
     font-size: 2em;
@@ -398,8 +403,6 @@ header h1 {
     width: 60%;
     /* margin-right: auto; */
     object-fit: contain;
-    animation: flipInY;
-    animation-duration: 1300ms;
   }
 
   :is(.article-wrapper .article-title h1):before {
