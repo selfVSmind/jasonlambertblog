@@ -398,6 +398,8 @@ header h1 {
     width: 60%;
     /* margin-right: auto; */
     object-fit: contain;
+    animation: flipInY;
+    animation-duration: 1300ms;
   }
 
   :is(.article-wrapper .article-title h1):before {
