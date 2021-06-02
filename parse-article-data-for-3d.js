@@ -43,6 +43,13 @@ const renderer = {
     // return html
     return '';
   },
+  list(list) {
+    // return `{ "type": "list", "data": { "list": "${list}" } },`;
+    return ''; // fix later
+  },
+  listitem(text) {
+    return `{ "type": "listitem", "data": { "listitem": "${text}" } },`;
+  },
   em(text) {
     return text;
   },
