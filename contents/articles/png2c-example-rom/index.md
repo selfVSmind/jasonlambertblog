@@ -14,7 +14,11 @@ video: https://www.youtube.com/embed/ZAk2-fZf-rk
 <br />
  -->
 
-Those sound effects really help the immersion factor!
+<p style="text-align: center;">Those sound effects really help the immersion factor!</p>
+
+### Download The ROM From The Video!
+
+Give it a try. You can download the sample rom [right here][romlink].
 
 About 7 years ago, I was really into the idea of coding my own N64 game.
 I took a deep dive into the tools that I could find and the limited documentation that came with it.
