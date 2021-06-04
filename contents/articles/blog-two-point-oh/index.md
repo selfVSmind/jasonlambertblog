@@ -31,8 +31,3 @@ You are already viewing the after so here is a link to <a href="old-version" tar
 - [Neumorphic](https://www.justinmind.com/blog/neumorphism-ui/) design!
 - Did I mention CSS?
 - Oh! Some good sounding layout advice from a YouTube video I watched this morning: have something big, something medium, and something small.
-
-### Time Machine
-
-Since I'm already building older commits, here is a <a href="oldest-version" target="_blank">VERY old version</a> (opens a new tab).
-As you can see, this project's humble beginnings were that of a standard [Wintersmith](//wintersmith.io) site. I have a decently strong desire to abandon the Wintersmith NPM package altogether in favor of something custom from the ground up, but what fun would that be?
