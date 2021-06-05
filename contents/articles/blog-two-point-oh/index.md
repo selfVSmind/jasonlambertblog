@@ -19,6 +19,7 @@ You are already viewing the after so here is a link to <a href="old-version" tar
 
 ### What Did I Do?
 
+- Added 'graphic' field to every article's metadata.
 - I've rewritten the CSS file from scratch!
 - I reworked the main page to include project cards.
 - Added some animations and Neumorphic design elements.
