@@ -44,7 +44,7 @@ The output data consists of arrays of vertex data and arrays of pixel data to te
 
 ### Using The New Program
 
-To get started with the new updates, I took the liberty of shrinking my favorite picture of myself down to 320x240 pixels and renaming it **_full_screen_image.png_**. (The name doesn't matter.)
+To get started with the new updates, I took the liberty of shrinking one of my favorite pictures down to 320x240 pixels and renaming it **_full_screen_image.png_**. (The name doesn't matter.)
 
 [![Jason Lambert on Chive](full_screen_image.png)](full_screen_image.png)
 

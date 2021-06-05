@@ -27,7 +27,7 @@ You are already viewing the after so here is a link to <a href="old-version" tar
 
 ### What Did I Learn?
 
-- I've been evading a proper CSS eduaction for **years**. I feel I have a much stronger grasp on things now.
+- I've been evading a proper CSS eduaction for **_years_**. I feel I have a much stronger grasp on things now.
 - I need to stop being so stubborn.
 - [Neumorphic](https://www.justinmind.com/blog/neumorphism-ui/) design!
 - Did I mention CSS?
