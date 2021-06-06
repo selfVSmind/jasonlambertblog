@@ -16,6 +16,21 @@
   min-height: 500px;
 }
 
+.about-me-title {
+  margin-top: 100px;
+}
+
+.about-me {
+  width: 90%;
+  margin: auto;
+  max-width: 1920px;
+  padding-top: 0.1px;
+}
+
+.about-me p {
+  padding: 0px 15px 15px 15px;
+}
+
 .blog-primary-article img {
   width: 100%;
 }
@@ -165,7 +180,7 @@ li {
   padding-bottom: 20px;
 }
 
-.projects > * > h1 {
+:is(.projects h1, .about-me h1) {
   margin-left: 20px;
 }
 
@@ -304,6 +319,10 @@ header h1 {
 }
 
 @media only screen and (min-width: 1023px) {
+  .about-me-title {
+    margin-top: 200px;
+  }
+
   .section-title {
     font-size: 5em;
   }
