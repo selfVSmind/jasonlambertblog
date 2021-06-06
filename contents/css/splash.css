@@ -16,6 +16,11 @@
   min-height: 500px;
 }
 
+.fourohfour {
+  margin-bottom: 15vh;
+  line-height: unset !important;
+}
+
 .about-me-title {
   margin-top: 100px;
 }
