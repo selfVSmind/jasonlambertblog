@@ -4,7 +4,7 @@ module.exports = (env, callback) ->
       e.g. "paginator": {"perPage": 10} ###
 
   defaults =
-    template: 'blog.pug' # template that renders pages
+    template: 'blog.pug' # template that renders blog home
     articles: 'articles' # directory containing contents to paginate
     first: 'blog/index.html' # filename/url for first page
     filename: 'page/%d/index.html' # filename for rest of pages
